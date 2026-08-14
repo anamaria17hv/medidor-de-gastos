@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "administracion de finanzas",
+  "homepage": "https://github.com/anamaria17hv/medidor-de-gastos#readme",
+  "bugs": {
+    "url": "https://github.com/anamaria17hv/medidor-de-gastos/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anamaria17hv/medidor-de-gastos.git"
+  },
+  "license": "ISC",
+  "author": "Maria hernandez",
+  "type": "commonjs",
+  "main": "test command",
+  "scripts": {
+    "test": "git repository:https://github.com/anamaria17hv/medidor-de-gastos.git"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.23.3"
+  }
+}
