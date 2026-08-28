@@ -1,9 +1,10 @@
 
-const  db =require("..")
+const  db =require("../config/db")
 
-class GastoModel{ 
+class GastosModel{ 
     static async consultarGastos(){
-        const resultados =await db.query("SElECT *FROM  gastos")
+        const [resultados] =await db.query("SElECT *FROM  gastos")
+        //[datos][metadatos]
     console.log(resultados)
     return resultados
     
@@ -12,5 +13,4 @@ class GastoModel{
     
 }
 
-const prueba =GastoModel
-prueba.consultarGastos()
+module.exports = GastosModel
