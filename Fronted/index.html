@@ -1,31 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro de Gastos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medidor de Gastos</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h1>Administración de Gastos</h1>
+  <div class="app">
 
-<form>
-    <label>Monto:</label><br>
-    <input type="number" placeholder="Ingrese el monto"><br><br>
+    <!-- ENCABEZADO -->
+    <header class="header">
+      <div>
+        <p class="eyebrow">CONTROL FINANCIERO</p>
+        <h1>Medidor de Gastos</h1>
+        <p class="subtitle">
+          Registra, consulta y organiza tus ingresos y gastos.
+        </p>
+      </div>
 
-    <label>Categoría:</label><br>
-    <input type="text" placeholder="Ej: Comida"><br><br>
+      <div class="balance-box">
+        <span>Balance actual</span>
+        <strong id="balance">$0</strong>
+      </div>
+    </header>
 
-    <label>Fecha:</label><br>
-    <input type="date"><br><br>
+    <!-- RESUMEN -->
+    <section class="summary">
 
-    <label>Tipo:</label><br>
-    <select>
-        <option>Ingreso</option>
-        <option>Gasto</option>
-    </select><br><br>
+      <div class="summary-card income-card">
+        <span>Ingresos</span>
+        <strong id="totalIngresos">$0</strong>
+      </div>
 
-    <button type="submit">Guardar</button>
-</form>
+      <div class="summary-card expense-card">
+        <span>Gastos</span>
+        <strong id="totalGastos">$0</strong>
+      </div>
+
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="content">
+
+      <!-- FORMULARIO -->
+      <section class="form-section">
+
+        <h2 id="formTitle">Registrar movimiento</h2>
+
+        <p class="section-description">
+          Ingresa la información de tu movimiento.
+        </p>
+
+        <form id="gastoForm">
+
+          <!-- ID OCULTO PARA EDITAR -->
+          <input type="hidden" id="id_gasto">
+
+          <!-- MONTO -->
+          <label for="monto">Monto</label>
+          <input
+            type="number"
+            id="monto"
+            placeholder="Ej. 250000"
+            min="0.01"
+            step="0.01"
+            required
+          >
+
+          <!-- FECHA -->
+          <label for="fecha">Fecha</label>
+          <input
+            type="date"
+            id="fecha"
+            required
+          >
+
+          <!-- CATEGORÍA -->
+          <label for="categoria">Categoría</label>
+          <select id="categoria" required>
+            <option value="">Selecciona una categoría</option>
+            <option value="Salario">Salario</option>
+            <option value="Alimentación">Alimentación</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Servicios">Servicios</option>
+            <option value="Compras">Compras</option>
+            <option value="Entretenimiento">Entretenimiento</option>
+            <option value="Educación">Educación</option>
+            <option value="Otros">Otros</option>
+          </select>
+
+          <!-- TIPO -->
+          <label>Tipo de movimiento</label>
+
+          <div class="type-buttons">
+
+            <button
+              type="button"
+              class="type-btn income-btn active"
+              id="incomeBtn"
+            >
+              Ingreso
+            </button>
+
+            <button
+              type="button"
+              class="type-btn expense-btn"
+              id="expenseBtn"
+            >
+              Gasto
+            </button>
+
+          </div>
+
+          <input type="hidden" id="tipo" value="Ingreso">
+
+          <!-- BOTONES DEL FORMULARIO -->
+          <div class="form-actions">
+
+            <button
+              class="save-btn"
+              type="submit"
+              id="saveBtn"
+            >
+              Guardar movimiento
+            </button>
+
+            <button
+              class="cancel-btn hidden"
+              type="button"
+              id="cancelBtn"
+            >
+              Cancelar edición
+            </button>
+
+          </div>
+
+          <p id="message" class="message"></p>
+
+        </form>
+
+      </section>
+
+      <!-- MOVIMIENTOS REGISTRADOS -->
+      <section class="movements-section">
+
+        <div class="section-header">
+
+          <div>
+            <h2>Movimientos registrados</h2>
+            <p id="count">0 registros</p>
+          </div>
+
+          <button
+            class="refresh-btn"
+            id="refreshBtn"
+            type="button"
+          >
+            Actualizar
+          </button>
+
+        </div>
+
+        <!-- AQUÍ APARECERÁN LOS MOVIMIENTOS -->
+        <div id="movimientos" class="movements-list"></div>
+
+        <!-- MENSAJE CUANDO NO HAY MOVIMIENTOS -->
+        <div id="empty" class="empty">
+          Aún no hay movimientos registrados.
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
 
 </body>
 </html>
